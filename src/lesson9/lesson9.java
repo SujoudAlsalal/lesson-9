@@ -69,14 +69,18 @@ public class lesson9 {
 	}
 	@Test (priority=4  )
 	public void  findLabs() {
-		List<WebElement>  Itemsnames= driver.findElements(By.className("btn"));
+		List<WebElement>  Itemsnames= driver.findElements(By.className("inventory_item_name"));
 	
+		List<WebElement> myAddToCartButtons = driver.findElements(By.className("btn"));
 		
-		System.out.println( Itemsnames.size());
-		for (int i=0; i< Itemsnames.size();i++) {
+		for(int i = 0 ;i< Itemsnames.size();i++ ) {
 			
-		
-			System.out.println( Itemsnames.get(i).getText());
-			 }
+			
+			String itemName = Itemsnames.get(i).getText();
+			myAddToCartButtons.get(i).click();
+
+			if(itemName.contains("Labs")) {
+			break ; 
+			}
 	}
-};
+}}
